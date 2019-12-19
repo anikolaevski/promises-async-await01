@@ -7,6 +7,7 @@ export default class GameSavingLoader {
     return new Promise((resolve, reject) => {
       read()
         .then((buffer) => {
+          // console.log(buffer);
           json(buffer)
             .then((data) => {
               resolve(data);

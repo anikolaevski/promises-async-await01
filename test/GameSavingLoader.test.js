@@ -16,8 +16,15 @@ test('Test read & parse', () => {
   const expected = UniTestData;
   read().then((dat) => {
     json(dat).then((result) => {
-      // const result = JSON.parse(data);
       expect(result).toEqual(expected);
     });
   });
 });
+
+test('reader', () => {
+  const expected = 180;
+  read().then((dat) => {
+    expect(dat.length).toBe(expected);
+  })
+
+})
