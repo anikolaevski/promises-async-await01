@@ -1,31 +1,22 @@
-import { GameSavingLoader } from '../src/js/GameSavingLoader';
-import { GameSavingData } from '../src/js/GameSavingData';
-import { readGameSaving } from '../src/js/readGameSaving';
+import GameSavingLoader from '../src/js/GameSavingLoader';
+import json from '../src/js/parser';
+import read from '../src/js/reader';
 
 test('Test GameSavingLoader', () => {
   const expected = JSON.parse('{"id":9,"created":1546300800,"userInfo":{"id":1,"name":"Hitman","level":10,"points":2000}}');
-
   GameSavingLoader.load().then((data) => {
     const result = JSON.parse(data);
     expect(result).toEqual(expected);
   });
 });
 
-test('Test GameSavingData', () => {
+
+test('Test read & parse', () => {
   const expected = JSON.parse('{"id":9,"created":1546300800,"userInfo":{"id":1,"name":"Hitman","level":10,"points":2000}}');
-  const sourceData = new GameSavingData(expected);
-
-  sourceData.json().then((data) => {
-    const result = JSON.parse(data);
-    expect(result).toEqual(expected);
-  });
-});
-
-test('Test readGameSaving', () => {
-  const expected = JSON.parse('{"id":9,"created":1546300800,"userInfo":{"id":1,"name":"Hitman","level":10,"points":2000}}');
-
-  readGameSaving().then((data) => {
-    const result = new GameSavingData(data).json();
-    expect(result).toEqual(expected);
+  read().then((dat) => {
+    json(dat).then((data) => {
+      const result = JSON.parse(data);
+      expect(result).toEqual(expected);
+    });
   });
 });

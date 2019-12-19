@@ -1,13 +1,17 @@
-/* eslint-disable import/prefer-default-export */
-// eslint-disable-next-line import/newline-after-import
-import { readGameSaving } from './readGameSaving';
-import { GameSavingData } from './GameSavingData';
+import read from './reader';
+import json from './parser';
 
-export class GameSavingLoader {
-  // eslint-disable-next-line class-methods-use-this
+export default class GameSavingLoader {
   static load() {
-    const data = readGameSaving()
-      .then(dat => new GameSavingData(dat).json());
-    return data;
+    // eslint-disable-next-line no-unused-vars
+    return new Promise((resolve, reject) => {
+      read()
+        .then((buffer) => {
+          json(buffer)
+            .then((data) => {
+              resolve(data);
+            });
+        });
+    });
   }
 }

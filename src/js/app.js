@@ -1,8 +1,11 @@
 /* eslint-disable no-console */
 // TODO: write code here
-import { GameSavingLoader } from './GameSavingLoader';
+import GameSavingLoader from './GameSavingLoader';
 
-GameSavingLoader.load().then((data) => {
-  const obj = JSON.parse(data);
-  console.log(obj);
-});
+GameSavingLoader.load().then(
+  (data) => {
+    console.log(1, data);
+    const obj = JSON.parse(data);
+    console.log(2, obj);
+  },
+);

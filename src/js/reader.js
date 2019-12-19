@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/prefer-default-export
-export function readGameSaving() {
+export default function read() {
   // eslint-disable-next-line no-unused-vars
   return new Promise((resolve, reject) => {
     // эмуляция чтения файла
@@ -14,6 +13,6 @@ export function readGameSaving() {
         }
         resolve(buffer);
       })(data);
-    }, 5000);
+    }, 1000);
   });
 }
