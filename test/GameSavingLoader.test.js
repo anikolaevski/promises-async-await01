@@ -25,6 +25,5 @@ test('reader', () => {
   const expected = 180;
   read().then((dat) => {
     expect(dat.length).toBe(expected);
-  })
-
-})
+  });
+});
