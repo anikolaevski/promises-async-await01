@@ -21,7 +21,7 @@ test('Test read & parse', () => {
   });
 });
 
-test('reader', () => {
+test('reader result length', () => {
   const expected = 180;
   read().then((dat) => {
     expect(dat.length).toBe(expected);

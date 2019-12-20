@@ -12,6 +12,9 @@ export default class GameSavingLoader {
             .then((data) => {
               resolve(data);
             });
+        })
+        .catch((error) => {
+          reject(error);
         });
     });
   }
